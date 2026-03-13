@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gcp": "https://cloud.google.com/scheduler/docs/reference/rest/v1/",
+    "Job": "gcp:projects.locations.jobs",
+    "name": "schema:name",
+    "description": "schema:description",
+    "schedule": "schema:repeatFrequency",
+    "timeZone": "schema:timezone",
+    "state": "schema:status",
+    "uri": "schema:url",
+    "httpMethod": "schema:HttpMethod",
+    "lastAttemptTime": "schema:dateModified",
+    "scheduleTime": "schema:scheduledTime",
+    "httpTarget": {
+      "@id": "gcp:HttpTarget",
+      "@type": "@id"
+    },
+    "pubsubTarget": {
+      "@id": "gcp:PubsubTarget",
+      "@type": "@id"
+    },
+    "retryConfig": {
+      "@id": "gcp:RetryConfig",
+      "@type": "@id"
+    }
+  }
+}

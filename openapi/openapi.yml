@@ -1,0 +1,355 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Scheduler API
+  description: >-
+    The Cloud Scheduler API enables creation and management of scheduled jobs
+    that run on a recurring basis. Jobs can target HTTP endpoints, Pub/Sub
+    topics, or App Engine applications.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/scheduler/docs
+servers:
+  - url: https://cloudscheduler.googleapis.com
+paths:
+  /v1/projects/{project}/locations/{location}/jobs:
+    get:
+      operationId: listJobs
+      summary: List jobs
+      description: Lists jobs in a project and location.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListJobsResponse'
+    post:
+      operationId: createJob
+      summary: Create a job
+      description: Creates a scheduled job.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+  /v1/projects/{project}/locations/{location}/jobs/{job}:
+    get:
+      operationId: getJob
+      summary: Get a job
+      description: Gets a scheduled job.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+    patch:
+      operationId: updateJob
+      summary: Update a job
+      description: Updates a scheduled job configuration.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+    delete:
+      operationId: deleteJob
+      summary: Delete a job
+      description: Deletes a scheduled job.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+  /v1/projects/{project}/locations/{location}/jobs/{job}:pause:
+    post:
+      operationId: pauseJob
+      summary: Pause a job
+      description: Pauses a scheduled job.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+  /v1/projects/{project}/locations/{location}/jobs/{job}:resume:
+    post:
+      operationId: resumeJob
+      summary: Resume a job
+      description: Resumes a paused scheduled job.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+  /v1/projects/{project}/locations/{location}/jobs/{job}:run:
+    post:
+      operationId: runJob
+      summary: Run a job
+      description: Forces a job to run now.
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: job
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The job name in the format
+            projects/{project}/locations/{location}/jobs/{job}.
+        description:
+          type: string
+        schedule:
+          type: string
+          description: Cron schedule in unix-cron format.
+        timeZone:
+          type: string
+          description: Time zone for the cron schedule.
+        httpTarget:
+          $ref: '#/components/schemas/HttpTarget'
+        pubsubTarget:
+          $ref: '#/components/schemas/PubsubTarget'
+        appEngineHttpTarget:
+          $ref: '#/components/schemas/AppEngineHttpTarget'
+        state:
+          type: string
+          enum:
+            - STATE_UNSPECIFIED
+            - ENABLED
+            - PAUSED
+            - DISABLED
+            - UPDATE_FAILED
+        retryConfig:
+          $ref: '#/components/schemas/RetryConfig'
+        lastAttemptTime:
+          type: string
+          format: date-time
+        scheduleTime:
+          type: string
+          format: date-time
+    HttpTarget:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+        httpMethod:
+          type: string
+          enum:
+            - HTTP_METHOD_UNSPECIFIED
+            - POST
+            - GET
+            - HEAD
+            - PUT
+            - DELETE
+            - PATCH
+            - OPTIONS
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
+    PubsubTarget:
+      type: object
+      properties:
+        topicName:
+          type: string
+          description: The Pub/Sub topic name.
+        data:
+          type: string
+          format: byte
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+    AppEngineHttpTarget:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+        appEngineRouting:
+          type: object
+          properties:
+            service:
+              type: string
+            version:
+              type: string
+            instance:
+              type: string
+        relativeUri:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
+    RetryConfig:
+      type: object
+      properties:
+        retryCount:
+          type: integer
+        maxRetryDuration:
+          type: string
+        minBackoffDuration:
+          type: string
+        maxBackoffDuration:
+          type: string
+        maxDoublings:
+          type: integer
+    ListJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        nextPageToken:
+          type: string

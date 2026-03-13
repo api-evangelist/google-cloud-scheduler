@@ -1,0 +1,122 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-scheduler/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud Scheduler Schema
+description: JSON Schema for Google Cloud Scheduler API resources.
+type: object
+$defs:
+  Job:
+    type: object
+    title: Job
+    description: A Cloud Scheduler job.
+    properties:
+      name:
+        type: string
+        description: >-
+          The job name in the format
+          projects/{project}/locations/{location}/jobs/{job}.
+      description:
+        type: string
+        description: A human-readable description of the job.
+      schedule:
+        type: string
+        description: Cron schedule in unix-cron format.
+      timeZone:
+        type: string
+        description: Time zone for the cron schedule.
+      httpTarget:
+        $ref: '#/$defs/HttpTarget'
+      pubsubTarget:
+        $ref: '#/$defs/PubsubTarget'
+      state:
+        type: string
+        description: The current state of the job.
+        enum:
+          - STATE_UNSPECIFIED
+          - ENABLED
+          - PAUSED
+          - DISABLED
+          - UPDATE_FAILED
+      retryConfig:
+        $ref: '#/$defs/RetryConfig'
+      lastAttemptTime:
+        type: string
+        format: date-time
+        description: The time of the last job attempt.
+      scheduleTime:
+        type: string
+        format: date-time
+        description: The next time the job is scheduled to run.
+    required:
+      - name
+      - schedule
+  HttpTarget:
+    type: object
+    title: HTTP Target
+    description: HTTP target configuration for a scheduled job.
+    properties:
+      uri:
+        type: string
+        format: uri
+        description: The full URL of the HTTP target.
+      httpMethod:
+        type: string
+        description: The HTTP method to use.
+        enum:
+          - HTTP_METHOD_UNSPECIFIED
+          - POST
+          - GET
+          - HEAD
+          - PUT
+          - DELETE
+          - PATCH
+          - OPTIONS
+      headers:
+        type: object
+        additionalProperties:
+          type: string
+        description: HTTP request headers.
+      body:
+        type: string
+        description: HTTP request body encoded in base64.
+    required:
+      - uri
+  PubsubTarget:
+    type: object
+    title: Pub/Sub Target
+    description: Pub/Sub target configuration for a scheduled job.
+    properties:
+      topicName:
+        type: string
+        description: >-
+          The Pub/Sub topic name in the format
+          projects/{project}/topics/{topic}.
+      data:
+        type: string
+        description: Message body encoded in base64.
+      attributes:
+        type: object
+        additionalProperties:
+          type: string
+        description: Attributes for the Pub/Sub message.
+    required:
+      - topicName
+  RetryConfig:
+    type: object
+    title: Retry Config
+    description: Retry configuration for a scheduled job.
+    properties:
+      retryCount:
+        type: integer
+        description: Maximum number of retry attempts.
+      maxRetryDuration:
+        type: string
+        description: Maximum time to retry a failed job.
+      minBackoffDuration:
+        type: string
+        description: Minimum backoff time between retries.
+      maxBackoffDuration:
+        type: string
+        description: Maximum backoff time between retries.
+      maxDoublings:
+        type: integer
+        description: Maximum number of times the backoff interval is doubled.
