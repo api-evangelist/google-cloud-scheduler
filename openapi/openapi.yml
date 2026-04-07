@@ -15,7 +15,7 @@ paths:
   /v1/projects/{project}/locations/{location}/jobs:
     get:
       operationId: listJobs
-      summary: List jobs
+      summary: Google Cloud Scheduler List jobs
       description: Lists jobs in a project and location.
       parameters:
         - name: project
@@ -37,7 +37,7 @@ paths:
                 $ref: '#/components/schemas/ListJobsResponse'
     post:
       operationId: createJob
-      summary: Create a job
+      summary: Google Cloud Scheduler Create a job
       description: Creates a scheduled job.
       parameters:
         - name: project
@@ -66,7 +66,7 @@ paths:
   /v1/projects/{project}/locations/{location}/jobs/{job}:
     get:
       operationId: getJob
-      summary: Get a job
+      summary: Google Cloud Scheduler Get a job
       description: Gets a scheduled job.
       parameters:
         - name: project
@@ -93,7 +93,7 @@ paths:
                 $ref: '#/components/schemas/Job'
     patch:
       operationId: updateJob
-      summary: Update a job
+      summary: Google Cloud Scheduler Update a job
       description: Updates a scheduled job configuration.
       parameters:
         - name: project
@@ -126,7 +126,7 @@ paths:
                 $ref: '#/components/schemas/Job'
     delete:
       operationId: deleteJob
-      summary: Delete a job
+      summary: Google Cloud Scheduler Delete a job
       description: Deletes a scheduled job.
       parameters:
         - name: project
@@ -150,7 +150,7 @@ paths:
   /v1/projects/{project}/locations/{location}/jobs/{job}:pause:
     post:
       operationId: pauseJob
-      summary: Pause a job
+      summary: Google Cloud Scheduler Pause a job
       description: Pauses a scheduled job.
       parameters:
         - name: project
@@ -178,7 +178,7 @@ paths:
   /v1/projects/{project}/locations/{location}/jobs/{job}:resume:
     post:
       operationId: resumeJob
-      summary: Resume a job
+      summary: Google Cloud Scheduler Resume a job
       description: Resumes a paused scheduled job.
       parameters:
         - name: project
@@ -206,7 +206,7 @@ paths:
   /v1/projects/{project}/locations/{location}/jobs/{job}:run:
     post:
       operationId: runJob
-      summary: Run a job
+      summary: Google Cloud Scheduler Run a job
       description: Forces a job to run now.
       parameters:
         - name: project
