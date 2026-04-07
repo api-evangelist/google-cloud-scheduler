@@ -12,12 +12,12 @@ created: '2026-03-13'
 modified: '2026-03-13'
 specificationVersion: '0.18'
 tags:
-  - Scheduler
-  - Cron
-  - Jobs
-  - Scheduling
   - Automation
+  - Cron
   - Google Cloud
+  - Jobs
+  - Scheduler
+  - Scheduling
 apis:
   - name: Google Cloud Scheduler API
     description: >-
@@ -33,9 +33,9 @@ apis:
       - type: JSONSchema
         url: json-schema/json-schema.yml
     tags:
-      - Scheduler
-      - Cron Jobs
       - Automation
+      - Cron Jobs
+      - Scheduler
 common:
   - type: GettingStarted
     url: https://cloud.google.com/scheduler/docs/quickstart

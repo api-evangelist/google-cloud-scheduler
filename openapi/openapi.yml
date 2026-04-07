@@ -35,6 +35,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListJobsResponse'
+      tags:
+        - Projects
     post:
       operationId: createJob
       summary: Google Cloud Scheduler Create a job
@@ -63,6 +65,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+      tags:
+        - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:
     get:
       operationId: getJob
@@ -91,6 +95,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+      tags:
+        - Projects
     patch:
       operationId: updateJob
       summary: Google Cloud Scheduler Update a job
@@ -124,6 +130,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+      tags:
+        - Projects
     delete:
       operationId: deleteJob
       summary: Google Cloud Scheduler Delete a job
@@ -147,6 +155,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:pause:
     post:
       operationId: pauseJob
@@ -175,6 +185,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+      tags:
+        - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:resume:
     post:
       operationId: resumeJob
@@ -203,6 +215,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+      tags:
+        - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:run:
     post:
       operationId: runJob
@@ -231,6 +245,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Job'
+      tags:
+        - Projects
 components:
   schemas:
     Job:
@@ -353,3 +369,5 @@ components:
             $ref: '#/components/schemas/Job'
         nextPageToken:
           type: string
+tags:
+  - name: Projects
