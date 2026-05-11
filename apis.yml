@@ -43,6 +43,10 @@ common:
     url: https://cloud.google.com/scheduler/pricing
   - type: JSONLD
     url: json-ld/json-ld.json
+  - type: Integrations
+    url: https://cloud.google.com/marketplace
+integrations:
+  - name: Become a Partner
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
