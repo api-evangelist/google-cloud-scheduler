@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Scheduler API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Scheduler List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists jobs in a project and location."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Create a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a scheduled job."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Get a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs/:job",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a scheduled job."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Update a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs/:job",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a scheduled job configuration."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Delete a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs/:job",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a scheduled job."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Pause a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs/:job:pause",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Pauses a scheduled job."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Resume a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs/:job:resume",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resumes a paused scheduled job."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Scheduler Run a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudscheduler.googleapis.com/v1/projects/:project/locations/:location/jobs/:job:run",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "job",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Forces a job to run now."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
