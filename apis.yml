@@ -4,7 +4,7 @@ description: >-
   job, including batch, big data jobs, cloud infrastructure operations, and more. Cloud Scheduler reliably sends
   requests to HTTP endpoints, Pub/Sub topics, or App Engine applications on a recurring schedule, with automatic retries
   in case of failure and configurable retry policies.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-scheduler/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
