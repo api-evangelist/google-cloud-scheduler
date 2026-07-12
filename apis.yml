@@ -34,6 +34,10 @@ apis:
       - Cron Jobs
       - Scheduler
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-scheduler-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-scheduler-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/GoogleCloudPlatform
   - type: GettingStarted
