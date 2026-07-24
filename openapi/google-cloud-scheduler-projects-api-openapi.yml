@@ -1,16 +1,15 @@
 openapi: 3.1.0
 info:
-  title: Google Cloud Scheduler API
-  description: >-
-    The Cloud Scheduler API enables creation and management of scheduled jobs
-    that run on a recurring basis. Jobs can target HTTP endpoints, Pub/Sub
-    topics, or App Engine applications.
+  title: Google Cloud Scheduler Projects API
+  description: The Cloud Scheduler API enables creation and management of scheduled jobs that run on a recurring basis. Jobs can target HTTP endpoints, Pub/Sub topics, or App Engine applications.
   version: v1
   contact:
     name: Google Cloud
     url: https://cloud.google.com/scheduler/docs
 servers:
-  - url: https://cloudscheduler.googleapis.com
+- url: https://cloudscheduler.googleapis.com
+tags:
+- name: Projects
 paths:
   /v1/projects/{project}/locations/{location}/jobs:
     get:
@@ -18,16 +17,16 @@ paths:
       summary: Google Cloud Scheduler List jobs
       description: Lists jobs in a project and location.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -36,22 +35,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListJobsResponse'
       tags:
-        - Projects
+      - Projects
     post:
       operationId: createJob
       summary: Google Cloud Scheduler Create a job
       description: Creates a scheduled job.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -66,28 +65,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Job'
       tags:
-        - Projects
+      - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:
     get:
       operationId: getJob
       summary: Google Cloud Scheduler Get a job
       description: Gets a scheduled job.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: job
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: job
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -96,27 +95,27 @@ paths:
               schema:
                 $ref: '#/components/schemas/Job'
       tags:
-        - Projects
+      - Projects
     patch:
       operationId: updateJob
       summary: Google Cloud Scheduler Update a job
       description: Updates a scheduled job configuration.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: job
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: job
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -131,53 +130,53 @@ paths:
               schema:
                 $ref: '#/components/schemas/Job'
       tags:
-        - Projects
+      - Projects
     delete:
       operationId: deleteJob
       summary: Google Cloud Scheduler Delete a job
       description: Deletes a scheduled job.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: job
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: job
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
       tags:
-        - Projects
+      - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:pause:
     post:
       operationId: pauseJob
       summary: Google Cloud Scheduler Pause a job
       description: Pauses a scheduled job.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: job
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: job
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -186,28 +185,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Job'
       tags:
-        - Projects
+      - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:resume:
     post:
       operationId: resumeJob
       summary: Google Cloud Scheduler Resume a job
       description: Resumes a paused scheduled job.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: job
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: job
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -216,28 +215,28 @@ paths:
               schema:
                 $ref: '#/components/schemas/Job'
       tags:
-        - Projects
+      - Projects
   /v1/projects/{project}/locations/{location}/jobs/{job}:run:
     post:
       operationId: runJob
       summary: Google Cloud Scheduler Run a job
       description: Forces a job to run now.
       parameters:
-        - name: project
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: location
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: job
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: job
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -246,7 +245,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Job'
       tags:
-        - Projects
+      - Projects
 components:
   schemas:
     Job:
@@ -254,9 +253,7 @@ components:
       properties:
         name:
           type: string
-          description: >-
-            The job name in the format
-            projects/{project}/locations/{location}/jobs/{job}.
+          description: The job name in the format projects/{project}/locations/{location}/jobs/{job}.
         description:
           type: string
         schedule:
@@ -274,11 +271,11 @@ components:
         state:
           type: string
           enum:
-            - STATE_UNSPECIFIED
-            - ENABLED
-            - PAUSED
-            - DISABLED
-            - UPDATE_FAILED
+          - STATE_UNSPECIFIED
+          - ENABLED
+          - PAUSED
+          - DISABLED
+          - UPDATE_FAILED
         retryConfig:
           $ref: '#/components/schemas/RetryConfig'
         lastAttemptTime:
@@ -287,43 +284,19 @@ components:
         scheduleTime:
           type: string
           format: date-time
-    HttpTarget:
+    RetryConfig:
       type: object
       properties:
-        uri:
+        retryCount:
+          type: integer
+        maxRetryDuration:
           type: string
-          format: uri
-        httpMethod:
+        minBackoffDuration:
           type: string
-          enum:
-            - HTTP_METHOD_UNSPECIFIED
-            - POST
-            - GET
-            - HEAD
-            - PUT
-            - DELETE
-            - PATCH
-            - OPTIONS
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        body:
+        maxBackoffDuration:
           type: string
-          format: byte
-    PubsubTarget:
-      type: object
-      properties:
-        topicName:
-          type: string
-          description: The Pub/Sub topic name.
-        data:
-          type: string
-          format: byte
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
+        maxDoublings:
+          type: integer
     AppEngineHttpTarget:
       type: object
       properties:
@@ -347,19 +320,6 @@ components:
         body:
           type: string
           format: byte
-    RetryConfig:
-      type: object
-      properties:
-        retryCount:
-          type: integer
-        maxRetryDuration:
-          type: string
-        minBackoffDuration:
-          type: string
-        maxBackoffDuration:
-          type: string
-        maxDoublings:
-          type: integer
     ListJobsResponse:
       type: object
       properties:
@@ -369,5 +329,40 @@ components:
             $ref: '#/components/schemas/Job'
         nextPageToken:
           type: string
-tags:
-  - name: Projects
+    HttpTarget:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+        httpMethod:
+          type: string
+          enum:
+          - HTTP_METHOD_UNSPECIFIED
+          - POST
+          - GET
+          - HEAD
+          - PUT
+          - DELETE
+          - PATCH
+          - OPTIONS
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
+    PubsubTarget:
+      type: object
+      properties:
+        topicName:
+          type: string
+          description: The Pub/Sub topic name.
+        data:
+          type: string
+          format: byte
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
