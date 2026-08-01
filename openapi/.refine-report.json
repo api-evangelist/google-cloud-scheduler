@@ -1,0 +1,14 @@
+{
+  "provider": "google-cloud-scheduler",
+  "sources": [
+    "google-cloud-scheduler-projects-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-scheduler-projects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
