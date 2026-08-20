@@ -25,6 +25,13 @@ tags:
   - Automation
   - Cron
   - Google Cloud
+  - Job
+  - Scheduler
+  - Scheduling
+tags_raw:
+  - Automation
+  - Cron
+  - Google Cloud
   - Jobs
   - Scheduler
   - Scheduling
@@ -35,6 +42,8 @@ apis:
   humanURL: https://cloud.google.com/scheduler/docs
   baseURL: https://cloudscheduler.googleapis.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
