@@ -4,6 +4,18 @@ description: >-
   job, including batch, big data jobs, cloud infrastructure operations, and more. Cloud Scheduler reliably sends
   requests to HTTP endpoints, Pub/Sub topics, or App Engine applications on a recurring schedule, with automatic retries
   in case of failure and configurable retry policies.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
