@@ -248,15 +248,6 @@ paths:
       - Projects
 components:
   schemas:
-    ListJobsResponse:
-      type: object
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
-        nextPageToken:
-          type: string
     HttpTarget:
       type: object
       properties:
@@ -281,29 +272,19 @@ components:
         body:
           type: string
           format: byte
-    AppEngineHttpTarget:
+    RetryConfig:
       type: object
       properties:
-        httpMethod:
+        retryCount:
+          type: integer
+        maxRetryDuration:
           type: string
-        appEngineRouting:
-          type: object
-          properties:
-            service:
-              type: string
-            version:
-              type: string
-            instance:
-              type: string
-        relativeUri:
+        minBackoffDuration:
           type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        body:
+        maxBackoffDuration:
           type: string
-          format: byte
+        maxDoublings:
+          type: integer
     Job:
       type: object
       properties:
@@ -340,19 +321,6 @@ components:
         scheduleTime:
           type: string
           format: date-time
-    RetryConfig:
-      type: object
-      properties:
-        retryCount:
-          type: integer
-        maxRetryDuration:
-          type: string
-        minBackoffDuration:
-          type: string
-        maxBackoffDuration:
-          type: string
-        maxDoublings:
-          type: integer
     PubsubTarget:
       type: object
       properties:
@@ -366,3 +334,35 @@ components:
           type: object
           additionalProperties:
             type: string
+    ListJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        nextPageToken:
+          type: string
+    AppEngineHttpTarget:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+        appEngineRouting:
+          type: object
+          properties:
+            service:
+              type: string
+            version:
+              type: string
+            instance:
+              type: string
+        relativeUri:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
