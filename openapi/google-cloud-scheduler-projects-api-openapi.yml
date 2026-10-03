@@ -248,19 +248,19 @@ paths:
       - Projects
 components:
   schemas:
-    PubsubTarget:
+    RetryConfig:
       type: object
       properties:
-        topicName:
+        retryCount:
+          type: integer
+        maxRetryDuration:
           type: string
-          description: The Pub/Sub topic name.
-        data:
+        minBackoffDuration:
           type: string
-          format: byte
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
+        maxBackoffDuration:
+          type: string
+        maxDoublings:
+          type: integer
     AppEngineHttpTarget:
       type: object
       properties:
@@ -293,19 +293,6 @@ components:
             $ref: '#/components/schemas/Job'
         nextPageToken:
           type: string
-    RetryConfig:
-      type: object
-      properties:
-        retryCount:
-          type: integer
-        maxRetryDuration:
-          type: string
-        minBackoffDuration:
-          type: string
-        maxBackoffDuration:
-          type: string
-        maxDoublings:
-          type: integer
     Job:
       type: object
       properties:
@@ -342,6 +329,19 @@ components:
         scheduleTime:
           type: string
           format: date-time
+    PubsubTarget:
+      type: object
+      properties:
+        topicName:
+          type: string
+          description: The Pub/Sub topic name.
+        data:
+          type: string
+          format: byte
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
     HttpTarget:
       type: object
       properties:
