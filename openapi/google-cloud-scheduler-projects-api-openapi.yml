@@ -248,42 +248,6 @@ paths:
       - Projects
 components:
   schemas:
-    RetryConfig:
-      type: object
-      properties:
-        retryCount:
-          type: integer
-        maxRetryDuration:
-          type: string
-        minBackoffDuration:
-          type: string
-        maxBackoffDuration:
-          type: string
-        maxDoublings:
-          type: integer
-    AppEngineHttpTarget:
-      type: object
-      properties:
-        httpMethod:
-          type: string
-        appEngineRouting:
-          type: object
-          properties:
-            service:
-              type: string
-            version:
-              type: string
-            instance:
-              type: string
-        relativeUri:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        body:
-          type: string
-          format: byte
     ListJobsResponse:
       type: object
       properties:
@@ -293,6 +257,30 @@ components:
             $ref: '#/components/schemas/Job'
         nextPageToken:
           type: string
+    HttpTarget:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+        httpMethod:
+          type: string
+          enum:
+          - HTTP_METHOD_UNSPECIFIED
+          - POST
+          - GET
+          - HEAD
+          - PUT
+          - DELETE
+          - PATCH
+          - OPTIONS
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
     Job:
       type: object
       properties:
@@ -329,6 +317,42 @@ components:
         scheduleTime:
           type: string
           format: date-time
+    RetryConfig:
+      type: object
+      properties:
+        retryCount:
+          type: integer
+        maxRetryDuration:
+          type: string
+        minBackoffDuration:
+          type: string
+        maxBackoffDuration:
+          type: string
+        maxDoublings:
+          type: integer
+    AppEngineHttpTarget:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+        appEngineRouting:
+          type: object
+          properties:
+            service:
+              type: string
+            version:
+              type: string
+            instance:
+              type: string
+        relativeUri:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
     PubsubTarget:
       type: object
       properties:
@@ -342,27 +366,3 @@ components:
           type: object
           additionalProperties:
             type: string
-    HttpTarget:
-      type: object
-      properties:
-        uri:
-          type: string
-          format: uri
-        httpMethod:
-          type: string
-          enum:
-          - HTTP_METHOD_UNSPECIFIED
-          - POST
-          - GET
-          - HEAD
-          - PUT
-          - DELETE
-          - PATCH
-          - OPTIONS
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        body:
-          type: string
-          format: byte
