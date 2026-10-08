@@ -63,6 +63,12 @@ apis:
   - type: JSONSchema
     url: json-schema/json-schema.yml
 common:
+  - type: Plans
+    url: plans/google-cloud-scheduler-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-cloud-scheduler-rate-limits.yml
+  - type: FinOps
+    url: finops/google-cloud-scheduler-finops.yml
   - type: Website
     url: https://www.google.com/
   - type: AgenticAccess
