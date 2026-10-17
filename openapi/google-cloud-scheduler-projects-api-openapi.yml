@@ -248,15 +248,6 @@ paths:
       - Projects
 components:
   schemas:
-    ListJobsResponse:
-      type: object
-      properties:
-        jobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Job'
-        nextPageToken:
-          type: string
     HttpTarget:
       type: object
       properties:
@@ -274,6 +265,51 @@ components:
           - DELETE
           - PATCH
           - OPTIONS
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        body:
+          type: string
+          format: byte
+    PubsubTarget:
+      type: object
+      properties:
+        topicName:
+          type: string
+          description: The Pub/Sub topic name.
+        data:
+          type: string
+          format: byte
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+    ListJobsResponse:
+      type: object
+      properties:
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+        nextPageToken:
+          type: string
+    AppEngineHttpTarget:
+      type: object
+      properties:
+        httpMethod:
+          type: string
+        appEngineRouting:
+          type: object
+          properties:
+            service:
+              type: string
+            version:
+              type: string
+            instance:
+              type: string
+        relativeUri:
+          type: string
         headers:
           type: object
           additionalProperties:
@@ -330,39 +366,3 @@ components:
           type: string
         maxDoublings:
           type: integer
-    AppEngineHttpTarget:
-      type: object
-      properties:
-        httpMethod:
-          type: string
-        appEngineRouting:
-          type: object
-          properties:
-            service:
-              type: string
-            version:
-              type: string
-            instance:
-              type: string
-        relativeUri:
-          type: string
-        headers:
-          type: object
-          additionalProperties:
-            type: string
-        body:
-          type: string
-          format: byte
-    PubsubTarget:
-      type: object
-      properties:
-        topicName:
-          type: string
-          description: The Pub/Sub topic name.
-        data:
-          type: string
-          format: byte
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
